@@ -32,6 +32,9 @@ void motion(const geometry_msgs::Twist &msg)
 
    else if (msg.angular.z<0)
     mode=4;
+  
+   else if(msg.linear.x==0)
+     mode=0;
 
 
 
