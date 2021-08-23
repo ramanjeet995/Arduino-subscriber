@@ -11,7 +11,7 @@ Stepper right(200, 4, 5, 6, 7);
 
 void motion(const geometry_msgs::Twist &msg);
 ros::NodeHandle node;
-ros::Subscriber<geometry_msgs::Twist> sub("/turtle1/cmd_vel", &motion);
+ros::Subscriber<geometry_msgs::Twist> sub("/cmd_vel", &motion);
 
 int mode=0;
 int change=0;
