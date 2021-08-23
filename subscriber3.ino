@@ -33,7 +33,7 @@ void motion(const geometry_msgs::Twist &msg)
    else if (msg.angular.z<0)
     mode=4;
   
-   else if(msg.linear.x==0)
+   else if(msg.linear.x<0.5 || msg.linear.x>-0.5 || msg.angular.z<0.5 || msg.angular.z>-0.5)
      mode=0;
 
 
@@ -62,26 +62,26 @@ void loop()
   lcd.println(mode);
   while (mode==1)
         { 
-          left.step(1);
-          right.step(1);
+          left.step(-1);
+          right.step(-1);
           break;        // without break it gets stuck in the loop
         }
   while (mode==2)
         { 
-          left.step(-1);
-          right.step(-1);
+          left.step(1);
+          right.step(1);
           break;
         }
   while (mode==3)
         { 
-          left.step(1);
-          right.step(-1);
+          left.step(-1);
+          right.step(1);
           break;
         }
   while (mode==4)
         { 
-          left.step(-1);
-          right.step(1);
+          left.step(1);
+          right.step(-1);
           break;
         }
    //mode=0;   , this is the main differenc ebetween subscriber 2 and subscriber 3
